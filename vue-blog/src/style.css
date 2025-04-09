@@ -1,0 +1,64 @@
+@import "tailwindcss";
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Define custom component classes using @apply */
+@layer components {
+  .prose {
+    /* Apply basic Tailwind utilities for prose elements */
+    & p {
+      @apply mb-4; /* Equivalent to margin-bottom: 1rem; */
+    }
+    & h1, & h2, & h3, & h4, & h5, & h6 {
+      @apply mt-6 mb-2 font-semibold; /* Adjust margins and weight */
+    }
+    & ul, & ol {
+      @apply ml-6 mb-4; /* Indentation and bottom margin */
+    }
+    & ul {
+      @apply list-disc;
+    }
+    & ol {
+      @apply list-decimal;
+    }
+    & a {
+      @apply text-blue-600 underline hover:text-blue-800; /* Example link styling */
+    }
+    /* Add more elements as needed: blockquote, code, pre, etc. */
+  }
+
+  .prose-sm {
+    @apply text-sm leading-relaxed; /* Smaller base font size and relaxed line height */
+
+    & p {
+      @apply mb-3; /* Slightly smaller margin */
+    }
+    & h1, & h2, & h3, & h4, & h5, & h6 {
+      @apply mt-4 mb-1 font-semibold; /* Adjust margins for smaller size */
+    }
+    & ul, & ol {
+      @apply ml-5 mb-3; /* Adjust indentation and margin */
+    }
+    & ul {
+      @apply list-disc;
+    }
+    & ol {
+      @apply list-decimal;
+    }
+    & a {
+      @apply text-blue-600 underline hover:text-blue-800;
+    }
+  }
+}
