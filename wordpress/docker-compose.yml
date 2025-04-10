@@ -30,6 +30,7 @@ services:
         define( 'WP_SITEURL', 'http://localhost:8000' );
     volumes:
       - wordpress_data:/var/www/html
+      - ./themes:/var/www/html/wp-content/themes
 
 volumes:
   db_data:
