@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import WPPage from './WPPage.vue';
 import { onMounted } from 'vue';
-import { useWordPressApi } from '../composables/useWordPressApi'; // Import the composable
+import { useWordPressApi } from '../composables/useWordPressApi'; 
 
-// Use the correct names for list-related state
+
 const { pages, loadingPages, errorPages, fetchPages } = useWordPressApi();
 
-// Fetch pages when the component is mounted
+
 onMounted(fetchPages);
 </script>
 
@@ -28,7 +28,7 @@ onMounted(fetchPages);
     </div>
   </div>
 
-  <!-- No Pages Found State (optional but good practice) -->
+  <!-- No Pages Found State -->
   <div v-else class="text-center py-4 text-gray-500">
     No pages found.
   </div>

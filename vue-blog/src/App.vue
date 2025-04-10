@@ -13,6 +13,4 @@ import { RouterView } from 'vue-router';
 </template>
 
 <style scoped>
-/* Scoped styles can be removed or kept if needed for specific component-only styles */
-/* Tailwind handles the global styling */
 </style>

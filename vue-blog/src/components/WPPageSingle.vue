@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { watchEffect, computed, defineProps } from "vue"; // Import defineProps
-// useRoute is no longer needed here if we only use the prop
-import { useWordPressApi } from '../composables/useWordPressApi';
-import DOMPurify from 'dompurify'; // Import DOMPurify
+import { watchEffect, computed, defineProps } from "vue"; 
 
-// Define the 'page' prop passed by the router (due to props: true)
+import { useWordPressApi } from '../composables/useWordPressApi';
+import DOMPurify from 'dompurify'; 
+
+
 const props = defineProps<{
-  page: string // The route parameter name is 'page', which holds the slug string
+  page: string 
 }>();
 
 const {
@@ -20,19 +20,19 @@ const {
   fetchMediaById
 } = useWordPressApi();
 
-// Watch the 'page' prop for changes and fetch data accordingly
+
 watchEffect(async () => {
-  const slug = props.page; // Use the prop value
+  const slug = props.page; 
   if (slug) {
-    // Reset previous data when slug changes
+    
     page.value = null;
     media.value = null;
-    // fetchPageBySlug now handles fetching media internally if featured_media exists
+    
     await fetchPageBySlug(slug);
   }
 });
 
-// Create computed properties for sanitized HTML
+
 const sanitizedDescription = computed(() => {
   return media.value?.description?.rendered
     ? DOMPurify.sanitize(media.value.description.rendered)

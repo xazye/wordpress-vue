@@ -1,20 +1,19 @@
 <script setup lang="ts">
 import { defineProps, computed } from "vue";
 import DOMPurify from 'dompurify';
-// Import the interface for type safety (optional but recommended)
 import type { WPPageData } from '../composables/useWordPressApi';
 
 const props = defineProps<{
-  page: WPPageData // Use the interface for the page prop
+  page: WPPageData 
 }>();
 
-// Computed property to safely get the featured media URL from embedded data
+
 const featuredMediaUrl = computed(() => {
-  // Access the embedded data, checking each level for existence
+  
   return props.page._embedded?.['wp:featuredmedia']?.[0]?.source_url || null;
 });
 
-// Computed property for the sanitized excerpt
+
 const sanitizedExcerpt = computed(() => {
   return props.page.excerpt?.rendered
     ? DOMPurify.sanitize(props.page.excerpt.rendered)
