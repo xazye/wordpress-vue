@@ -23,7 +23,7 @@ const sanitizedExcerpt = computed(() => {
 
 <template>
   <div>
-    <RouterLink :to="'/pages/' + page.slug" class="block hover:bg-gray-50 p-2">
+    <RouterLink :to="'/page/' + page.slug" class="block hover:bg-gray-50 p-2">
       <h3 class="text-lg font-semibold mb-1">{{ page.title.rendered }}</h3>
 
       <img

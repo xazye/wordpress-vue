@@ -18,7 +18,7 @@ services:
     image: wordpress:latest
     restart: always
     ports:
-      - "8000:80"
+      - "8888:80"
     environment:
       WORDPRESS_DB_HOST: db
       WORDPRESS_DB_USER: ${DB_USER:-wordpress}
@@ -26,8 +26,8 @@ services:
       WORDPRESS_DB_NAME: ${DB_NAME:-wordpress}
       WORDPRESS_DEBUG: ${WORDPRESS_DEBUG:-1}
       WORDPRESS_CONFIG_EXTRA: |
-        define( 'WP_HOME', 'http://localhost:8000' );
-        define( 'WP_SITEURL', 'http://localhost:8000' );
+        define( 'WP_HOME', 'http://localhost:8888' );
+        define( 'WP_SITEURL', 'http://localhost:8888' );
     volumes:
       - wordpress_data:/var/www/html
       - ./themes:/var/www/html/wp-content/themes

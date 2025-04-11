@@ -6,7 +6,7 @@ import WPPageSingle from '../components/WPPageSingle.vue';
 const routes = [
     { path: '/', name: 'Home', component: WPPagesList }, 
     { path: '/pages', name: 'WP Pages', component: WPPagesList },
-    { path: '/pages/:page', component: WPPageSingle, props: true },
+    { path: '/page/:page', component: WPPageSingle, props: true },
 ];
 
 const router = createRouter({
