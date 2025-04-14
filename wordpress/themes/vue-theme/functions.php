@@ -26,5 +26,8 @@ add_action( 'rest_api_init', function () {
         register_rest_route( 'myroutes', '/menu', array(
         'methods' => 'GET',
         'callback' => 'get_menu',
+        // temporary solution
+        // cause the docs don't want to load
+        'permission_callback' => function() { return ''; }
     ) );
 } );

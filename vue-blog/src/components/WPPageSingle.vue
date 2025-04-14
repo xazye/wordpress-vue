@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { watchEffect, computed, defineProps } from "vue"; 
 
-import { useWordPressApi } from '../composables/useWordPressApi';
+import { useGetWordrpessPagesApi } from '../composables/useWordPressApi';
 import DOMPurify from 'dompurify'; 
 
 
@@ -18,7 +18,7 @@ const {
   loadingMedia,
   errorMedia,
   fetchMediaById
-} = useWordPressApi();
+} = useGetWordrpessPagesApi();
 
 
 watchEffect(async () => {

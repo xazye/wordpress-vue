@@ -1,12 +1,13 @@
 import { createWebHistory, createRouter } from 'vue-router'; 
 
-import WPPagesList from '../components/WPPagesList.vue';
+import WPPostList from '../components/WPPostList.vue';
 import WPPageSingle from '../components/WPPageSingle.vue';
+import WPPostSingle from '../components/WPPostSingle.vue';
 
 const routes = [
-    { path: '/', name: 'Home', component: WPPagesList }, 
-    { path: '/pages', name: 'WP Pages', component: WPPagesList },
+    { path: '/', name: 'Home', component: WPPostList }, 
     { path: '/page/:page', component: WPPageSingle, props: true },
+    { path: '/post/:post', component: WPPostSingle, props: true },
 ];
 
 const router = createRouter({

@@ -1,45 +1,12 @@
 import { ref } from 'vue';
-
-// Define an interface for the Page structure (adjust based on actual API response)
-export interface WPPageData {
-  id: number;
-  slug: string;
-  title: { rendered: string };
-  content: { rendered: string };
-  featured_media?: number; // Optional featured media ID
-  excerpt?: { rendered: string }; // Optional excerpt
-  // Structure for embedded data (adjust based on actual API response with _embed)
-  _embedded?: {
-    'wp:featuredmedia'?: WPMediaData[]; // Array containing featured media details
-    // Add other embedded fields if needed
-  };
-  // Add other relevant fields from your WP API response
-}
-
-// Define an interface for Media details (adjust as needed)
-export interface WPMediaData {
-  id: number;
-  source_url: string; // URL of the image
-  alt_text: string; // Alt text
-  description?: { rendered: string }; // Optional description (used in original code)
-  // Add other relevant fields
-}
-
-
+import { fetchData } from '../utils/utils';
+import type { WPPageData, WPMediaData} from '../types/wordpressTypes'
 // Base URL for the WP API - We'll make this configurable later
 const WP_API_BASE_URL = '/wp-api'; // TODO: Move to config
 
-// Helper function for fetch requests
-async function fetchData<T>(url: string, options?: RequestInit): Promise<T> {
-  const response = await fetch(url, options);
-  if (!response.ok) {
-    throw new Error(`HTTP error! status: ${response.status} fetching ${url}`);
-  }
-  return await response.json() as T;
-}
+// this fucker needs to be more modularisezd
 
-
-export function useWordPressApi() {
+export function useGetWordrpessPagesApi() {
   // State for list of pages
   const pages = ref<WPPageData[] | null>(null);
   const loadingPages = ref(false);
@@ -119,9 +86,6 @@ export function useWordPressApi() {
       loadingMedia.value = false;
     }
   };
-
-  // We can add fetchPageBySlug/ID here later
-
   return {
     pages,
     loadingPages,
