@@ -5,7 +5,6 @@ import { useGetWordrpessPostsApi } from '../composables/getWordpressPosts';
 
 
 const { posts, loadingPosts, errorPosts, fetchPosts } = useGetWordrpessPostsApi();
-console.log('posts', posts.value)
 
 
 onMounted(()=>{
@@ -27,7 +26,6 @@ onMounted(()=>{
   <!-- Data Loaded State -->
   <div v-else-if="posts" class="[&>*:nth-child(odd)]:bg-blue-100"> 
     <div v-for="post in posts" :key="post.id" class="border border-gray-300 my-2 p-2"> 
-      {{ console.log('postinposts',post) }}
       <WPPost :post="post"/>
     </div>
   </div>

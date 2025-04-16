@@ -24,6 +24,11 @@ export default defineConfig({
           changeOrigin: true,
           rewrite: (path) => path.replace(/^\/menu/, ""),
         },
+        "/sidebars": {
+          target:  wpAPITarget + '/myroutes/sidebars',
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/sidebars/, ""),
+        },
     }
   }
 })

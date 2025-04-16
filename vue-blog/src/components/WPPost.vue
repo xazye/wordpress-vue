@@ -14,7 +14,6 @@ const props = defineProps<{
 // });
 
 
-console.log(props)
 const sanitizedExcerpt = computed(() => {
   return props.post.excerpt?.rendered
     ? DOMPurify.sanitize(props.post.excerpt.rendered)

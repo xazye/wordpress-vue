@@ -22,7 +22,6 @@ export function useGetWordrpessPostsApi() {
         loadingPosts.value = true;
         try {
             const data = await fetchData<WordPressPostData[]>(`${WP_API_BASE_URL}/posts`);
-            console.log(data)
             posts.value = data;
         } catch (err) {
             console.error("Failed to fetch posts:", err);
