@@ -22,20 +22,13 @@ const sanitizedExcerpt = computed(() => {
 </script>
 
 <template>
-  <div>
-    <RouterLink :to="'/post/' + post.slug" class="block hover:bg-gray-50 p-2">
-      <h3 class="text-lg font-semibold mb-1">{{ post.title.rendered }}</h3>
-
-      <!-- <img
-        v-if="featuredMediaUrl"
-        :src="featuredMediaUrl"
-        :alt="page.title.rendered"
-        class="mb-2 max-w-xs h-auto"
-      /> -->
-      <div v-if="sanitizedExcerpt" class="text-sm text-gray-700 prose-sm" v-html="sanitizedExcerpt"></div>
-
-    </RouterLink>
-  </div>
+  <RouterLink :to="'/post/' + post.slug" class="block group">
+    <h3 class="text-xl font-semibold mb-2 text-gray-800 group-hover:text-purple-700 transition-colors duration-200">{{ post.title.rendered }}</h3>
+    <div v-if="sanitizedExcerpt" class="text-sm text-gray-600 prose prose-sm max-w-none mb-3" v-html="sanitizedExcerpt"></div>
+    <span class="inline-block text-sm font-medium text-purple-600 group-hover:text-white group-hover:bg-purple-600 border border-purple-600 rounded px-3 py-1 transition-colors duration-200">
+      Read More &rarr;
+    </span>
+  </RouterLink>
 </template>
 
 <style scoped>

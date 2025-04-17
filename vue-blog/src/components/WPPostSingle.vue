@@ -41,23 +41,30 @@ const sanitizedContent = computed(() => {
 </script>
 
 <template>
-  <div v-if="loadingPost" class="text-center py-4">
-    Loading page...
-  </div>
+  <div class="bg-white shadow rounded-lg p-6 md:p-8 lg:p-10">
+    <div v-if="loadingPost" class="text-center py-10 text-gray-500">
+      <p>Loading post...</p>
+    </div>
 
-  <div v-else-if="errorPost" class="text-center py-4 text-red-600">
-    Error loading page: {{ errorPost.message }}
-  </div>
+    <div v-else-if="errorPost" class="text-center py-10 text-red-600 bg-red-100 border border-red-400 rounded p-4">
+      <p class="font-semibold">Error loading post:</p>
+      <p>{{ errorPost.message }}</p>
+    </div>
 
-  <div v-else-if="post">
-    <h1 class="text-2xl font-bold mb-4">{{ post.title.rendered }}</h1>
+    <article v-else-if="post">
+      <h1 class="text-3xl md:text-4xl font-bold mb-6 text-gray-800 border-b border-gray-200 pb-4">{{ post.title.rendered }}</h1>
 
-    <div v-if="sanitizedExcerpt" class="prose mb-4" v-html="sanitizedExcerpt"></div>
-    <div v-if="sanitizedContent" class="prose" v-html="sanitizedContent"></div>
+      <div v-if="sanitizedExcerpt" class="prose prose-lg max-w-none mb-6 text-gray-600 italic" v-html="sanitizedExcerpt"></div>
+      <div
+        v-if="sanitizedContent"
+        class="prose prose-lg max-w-none prose-headings:text-gray-700 prose-a:text-purple-600 hover:prose-a:text-purple-800 prose-strong:text-gray-700"
+        v-html="sanitizedContent"
+      ></div>
+    </article>
 
-  </div>
-   <div v-else-if="!loadingPost" class="text-center py-4 text-gray-500">
-    Page not found.
+    <div v-else-if="!loadingPost" class="text-center py-10 text-gray-500">
+      <p>Post not found.</p>
+    </div>
   </div>
 </template>
 
