@@ -1,3 +1,4 @@
+@import '@/src/assets/css/GallerySlider.css' layer(galleryslider);
 @import "tailwindcss";
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;

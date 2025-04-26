@@ -4,4 +4,6 @@ import './style.css';
 import App from './App.vue';
 
 // Create the Vue app instance, use the router, and mount it
-createApp(App).use(router).mount('#app');
+const app = createApp( App );
+app.use(router)
+app.mount('#app');

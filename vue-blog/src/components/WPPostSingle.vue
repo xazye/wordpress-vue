@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { defineProps, watchEffect, computed } from "vue";
 import DOMPurify from 'dompurify';
-import type { WordPressPostData } from '../types/wordpressTypes';
+import {initSlider} from '@/src/utils/gallerySlider.js';
 import { useGetWordrpessPostsApi } from "../composables/getWordpressPosts";
 
 
@@ -22,6 +22,7 @@ watchEffect(async () => {
   if (slug) {
     post.value = null;
     await fetchPostBySlug(slug);
+    initSlider()
   }
 });
 
